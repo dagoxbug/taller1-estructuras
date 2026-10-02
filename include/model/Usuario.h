@@ -11,12 +11,17 @@
  * @brief Representa a un usuario perteneciente al foro
  */
 class Usuario {
-
+private:
     int id;                 ///< Identificador unico del usuario
     std::string nombre;     ///< Nombre del usuario
 
 public:
     Usuario(int id, std::string nombre);
+    //Getters y setters
+    int getId();
+    std::string getNombre();
+    void setId(int id);
+    void setNombre(std::string nombre);
 };
 
 

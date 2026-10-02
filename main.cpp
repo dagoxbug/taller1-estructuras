@@ -7,6 +7,9 @@
 #include <fstream>
 #include <iostream>
 
+#include "include/model/Usuario.h"
+using namespace std;
+
 int main() {
 
     std::fstream file("usuarios.csv");
@@ -22,15 +25,19 @@ int main() {
     }
 
     std::string linea;
-    while (std::getline(file, linea)){
+    int i=0;
+    while (std::getline(file, linea)){ //usuarios
         std::stringstream ss(linea);
         std::string id,nombre;
 
         std::getline(ss, id, ';');
         std::getline(ss, nombre, ';');
         std::cout << id << " " << nombre << "\n";
+        // Usuario* usuario = new Usuario(stoi(id), nombre);
+
     }
-    while (std::getline(file2, linea)){
+
+    while (std::getline(file2, linea)){ //temas
         std::stringstream ss(linea);
         std::string id2,titulo,contenido,idusuario,respuestas;
 
