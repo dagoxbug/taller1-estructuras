@@ -16,7 +16,16 @@ private:
     std::string nombre;     ///< Nombre del usuario
 
 public:
+    /**
+     * @brief Constructor de la clase Usuario.
+     *
+     * Inicializa un usuario con un identificador y un nombre.
+     *
+     * @param id Identificador del usuario.
+     * @param nombre Nombre del usuario.
+     */
     Usuario(int id, std::string nombre);
+
     //Getters y setters
     int getId();
     std::string getNombre();
