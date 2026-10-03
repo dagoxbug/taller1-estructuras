@@ -25,7 +25,6 @@ int main() {
     }
 
     std::string linea;
-    int i=0;
     while (std::getline(file, linea)){ //usuarios
         std::stringstream ss(linea);
         std::string id,nombre;
@@ -33,7 +32,7 @@ int main() {
         std::getline(ss, id, ';');
         std::getline(ss, nombre, ';');
         std::cout << id << " " << nombre << "\n";
-        // Usuario* usuario = new Usuario(stoi(id), nombre);
+        Usuario* usuario = new Usuario(stoi(id), nombre);
 
     }
 

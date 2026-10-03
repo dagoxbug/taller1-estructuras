@@ -7,4 +7,7 @@ include_directories(.)
 
 add_executable(Taller1
         main.cpp
-        main.h)
+        main.h
+        model/Usuario.cpp
+        struct/ArregloDinamicoUsuario.cpp
+)

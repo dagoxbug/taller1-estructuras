@@ -4,7 +4,7 @@
 
 #include "../include/struct/ArregloDinamicoUsuario.h"
 
-arregloDinamicoUsuario::arregloDinamicoUsuario() {
+ArregloDinamicoUsuario::ArregloDinamicoUsuario() {
 
     cantidad = 0;
     capacidad = 1;
@@ -13,13 +13,13 @@ arregloDinamicoUsuario::arregloDinamicoUsuario() {
 }
 
 
-void arregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
+void ArregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 
     // si la cantidad de elementos es igual que la capacidad se agrega mas espacios
     if (cantidad == capacidad) {
         capacidad = capacidad * 2;
 
-        Usuario = (Usuario**)realloc(Usuario, capacidad * sizeof(Usuario*));
+        usuarios = (Usuario**)realloc(usuarios, capacidad * sizeof(Usuario*));
     }
 
     usuarios[cantidad] = usuario;
@@ -27,7 +27,7 @@ void arregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 }
 
 
-void arregloDinamicoUsuario::eliminarUsuario(int id) {
+void ArregloDinamicoUsuario::eliminarUsuario(int id) {
 
     int posicion = -1;
 
