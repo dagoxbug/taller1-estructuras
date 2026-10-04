@@ -34,6 +34,35 @@ void ArregloDinamicoTemas::mostrarTemas() {
     }
 }
 
+void ArregloDinamicoTemas::eliminarTemasPorUsuario(int idUsuario) {
+    for (int i = 0; i < cantidad; i++) {
+        if (temas[i]->getIdUsuario() == idUsuario) {
+            delete temas[i];
+
+            // movemos los temas hacia la izquierda
+            for (int j = i; j < cantidad - 1; j++) {
+                // el elemento que estaba a la derecha ocupa el espacio que quedo vacio
+                temas[j] = temas[j + 1];
+            }
+
+            cantidad--;
+            i--;
+        }
+    }
+    temas = (Tema**) realloc(temas, cantidad * sizeof(Tema*));
+}
+
+int ArregloDinamicoTemas::contarTemasPorUsuario(int idUsuario) {
+    int contador = 0;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (temas[i]->getIdUsuario() == idUsuario) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
 bool ArregloDinamicoTemas::existeTema(std::string id) {
     return false;
 }
@@ -46,6 +75,5 @@ bool ArregloDinamicoTemas::existeId(std::string id) {
             return true;
         }
     }
-
     return false;
 }

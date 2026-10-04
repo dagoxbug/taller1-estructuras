@@ -30,11 +30,6 @@ void ArregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 
 void ArregloDinamicoUsuario::eliminarUsuario(int id) {
 
-    // falta eliminar temas publicados por el usuario
-    // eliminar respuestas del usuario
-    // y mostrar la cantidad de temas y respuestas del usuario y verificar si se borra o no
-
-
     int posicion = -1;
 
     // Buscar el usuario
@@ -67,7 +62,6 @@ void ArregloDinamicoUsuario::eliminarUsuario(int id) {
     if (cantidad <= capacidad / 2 && capacidad > 1) {
 
         capacidad = capacidad / 2;
-
         usuarios = (Usuario**)realloc(usuarios, cantidad * sizeof(Usuario*));
     }
 }

@@ -39,6 +39,9 @@ public:
      */
     ArregloDinamicoUsuario();
 
+    //falta implementar
+    ~ArregloDinamicoUsuario();
+
     /**@brief agrega un usuario al arreglo
      *
      * si el arreglo no tiene espacio disponible, aumneta su capacidad

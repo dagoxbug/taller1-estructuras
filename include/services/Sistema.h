@@ -6,6 +6,7 @@
 #define TALLER1_SISTEMA_H
 #include "include/struct/ArregloDinamicoTemas.h"
 #include "include/struct/ArregloDinamicoUsuario.h"
+#include "include/struct/ListaRespuestas.h"
 
 /**
  * @class Sistema
@@ -16,6 +17,7 @@ private:
 
     ArregloDinamicoUsuario usuarios;
     ArregloDinamicoTemas temas;
+    ListaRespuestas respuestas;
 
     /**
      * @brief Usuario que se encuentra actualmente autenticado
@@ -63,6 +65,13 @@ public:
     void eliminarUsuario();
 
     void revisarTema();
+
+    /**
+    * @brief Permite al usuario publicar un nuevo tema en el foro.
+    *
+    * Solicita y valida el título y contenido del tema, genera un ID unico
+    * y lo agrega al arreglo de temas asociándolo al usuario actual.
+    */
     void publicar();
     void estadisticas();
 

@@ -38,6 +38,9 @@ public:
      */
     ArregloDinamicoTemas();
 
+    // falta implementar
+    ~ArregloDinamicoTemas();
+
     /**
     * @brief Agrega un nuevo tema al arreglo.
     *
@@ -50,15 +53,30 @@ public:
     */
     void agregarTema(Tema* tema);
 
-
-    void eliminarTema(int id);
-
     /**
     * @brief Muestra todos los temas almacenados por su ID y titulo
     */
     void mostrarTemas();
-    int getCantidad();
-    bool existeId(std::string id);
+
+
+    /**
+    * Elimina todos los temas creados por un usuario.
+    *
+    * Recorre el arreglo de temas y elimina aquellos cuyo ID de usuario
+    * coincide con el ID recibido. Luego reorganiza los elementos restantes
+    * y actualiza la cantidad de temas almacenados.
+    *
+    * @param idUsuario ID del usuario cuyos temas se desean eliminar.
+    */
+    void eliminarTemasPorUsuario(int idUsuario);
+
+    /**
+    * @brief Cuenta la cantidad de temas creados por un usuario.
+    *
+    * @param idUsuario ID del usuario cuyos temas se desean contar.
+    * @return Cantidad de temas creados por el usuario.
+    */
+    int contarTemasPorUsuario(int idUsuario);
 
     /**
     * @brief Comprueba si un identificador ya existe.
@@ -69,6 +87,8 @@ public:
     * @param id Identificador que se desea buscar.
     * @return true si el identificador ya existe, false en caso contrario.
     */
+    bool existeId(std::string id);
+
     bool existeTema(std::string id);
 
 };

@@ -43,6 +43,21 @@ public:
     Respuesta* getCabeza() const;
     int getCantidad() const;
     int getUltimoId() const;
+
+    /**
+     * @brief Cuenta la cantidad de respuestas realizadas por un usuario.
+     *
+     * @param idUsuario ID del usuario cuyas respuestas se desean contar.
+     * @return Cantidad de respuestas realizadas por el usuario.
+     */
+    int contarRespuestaPorUsuario(int idUsuario);
+
+    /**
+     * @brief Elimina todas las respuestas realizadas por un usuario.
+     *
+     * @param idUsuario ID del usuario cuyas respuestas se desean eliminar.
+     */
+    void eliminarRespuestasPorUsuario(int idUsuario);
 };
 
 #endif //TALLER1_ESTRUCTURAS_LISTARESPUESTAS_H

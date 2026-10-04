@@ -21,7 +21,6 @@ Usuario* Sistema::autenticarUsuario() {
             std::cout << "Error: usuario no encontrado \n";
         }
     }
-
     std::cout << "Bienvenido/a " << usuarioActual->getId() << "\n";
     return usuarioActual;
 }
@@ -82,7 +81,6 @@ void Sistema::eliminarUsuario() {
     usuarios.mostrarUsuarios();
 
     int id;
-
     std::cout << "Ingrese el ID del usuario que desea eliminar: ";
     std::cin >> id;
 
@@ -91,7 +89,47 @@ void Sistema::eliminarUsuario() {
         std::cout << "No puedes eliminarte a ti mismo \n";
         return;
     }
-    usuarios.eliminarUsuario(id);
+
+    Usuario* usuario = usuarios.buscarUsuario(id);
+
+    if (usuario == nullptr) {
+        std::cout << "Error: usuario no existe \n";
+        return;
+    }
+
+    // guardamos el nombre del usuario a eliminar
+    std::string nombre = usuario->getNombre();
+
+    int cantidadTemas = temas.contarTemasPorUsuario(id);
+    int cantidadRespuestas = respuestas.contarRespuestaPorUsuario(id);
+
+    // mostrar informacion del usuario a eliminar
+    std::cout << "El usuario " << nombre << " ha creado " << cantidadTemas << " temas \n";
+    std::cout << "Ha realizado " << cantidadRespuestas << " respuestas.\n";
+
+    char confirmacion;
+
+    while (true) {
+
+        std::cout << "¿Desea eliminar al usuario? (s/n): ";
+        std::cin >> confirmacion;
+
+        // si se confirma que se desea eliminar el usuario
+        if (confirmacion == 's' || confirmacion == 'S') {
+            temas.eliminarTemasPorUsuario(id);
+            respuestas.eliminarRespuestasPorUsuario(id);
+            usuarios.eliminarUsuario(id);
+            std::cout << "Usuario " << nombre << "eliminado con exito \n";
+            break;
+        }
+
+        if (confirmacion == 'n' || confirmacion == 'N') {
+            // cancelar y volver al menú
+            return;
+        }
+
+        std::cout << "Opción no válida. Ingrese s o n.\n";
+    }
 }
 
 void Sistema::publicar() {
@@ -131,7 +169,6 @@ void Sistema::publicar() {
 }
 
 std::string Sistema::generarIdTema() {
-
     std::string id;
 
     do {

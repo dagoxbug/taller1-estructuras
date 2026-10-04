@@ -22,6 +22,7 @@ private:
 public:
     Tema(std::string id, std::string titulo, std::string contenido, int idUsuario);
 
+    /// Getters
     std::string getId();
     std::string getTitulo();
     std::string getContenido();
