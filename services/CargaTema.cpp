@@ -9,8 +9,6 @@
 #include <iostream>
 #include <cctype>
 
-namespace {
-
     /// Quita el '\r' final que dejan los archivos guardados
     void quitarRetorno(std::string& texto) {
         if (!texto.empty() && texto.back() == '\r') {
@@ -103,7 +101,6 @@ namespace {
         }
         return true;
     }
-}
 
 bool cargarTemas(const std::string& rutaArchivo,
                  ArregloDinamicoUsuario& usuarios,

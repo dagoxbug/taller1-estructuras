@@ -3,6 +3,7 @@
 //
 
 #include "../include/services/Sistema.h"
+#include "../include/services/OpcionRevisarTema.h"
 
 
 Usuario* Sistema::autenticarUsuario() {
@@ -50,7 +51,7 @@ void Sistema::mostrarMenu() {
 
     switch (opcion) {
         case 'A':
-            //revisar tema
+            opcionRevisarTema(temas, usuarios, usuarioActual);
             break;
 
         case 'B':

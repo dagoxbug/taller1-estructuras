@@ -9,11 +9,10 @@
 
 #include "include/model/Usuario.h"
 #include "include/struct/ArregloDinamicoUsuario.h"
-#include "include/struct/ArregloDinamicoTemas.h"   // AGREGADO
-#include "include/services/CargaTema.h"           // AGREGADO (si tu archivo es CargaTema.h, cambia el nombre)
-
+#include "include/struct/ArregloDinamicoTemas.h"
+#include "include/services/CargaTema.h"
 ArregloDinamicoUsuario arregloUsuarios;
-ArregloDinamicoTemas arregloTemas;                 // AGREGADO
+ArregloDinamicoTemas arregloTemas;
 
 int main() {
 

@@ -81,5 +81,28 @@ bool ArregloDinamicoTemas::existeId(std::string id) {
             return true;
         }
     }
+
+    return false;
+}
+Tema* ArregloDinamicoTemas::buscarTema(const std::string& id) {
+    for (int i = 0; i < cantidad; i++) {
+        if (temas[i]->getId() == id) {
+            return temas[i];
+        }
+    }
+    return nullptr;
+}
+
+bool ArregloDinamicoTemas::moverAlInicio(const std::string& id) {
+    for (int posicion = 0; posicion < cantidad; posicion++) {
+        if (temas[posicion]->getId() == id) {
+            Tema* tema = temas[posicion];
+            for (int i = posicion; i > 0; i--) {   // corre hacia abajo los que estaban antes
+                temas[i] = temas[i - 1];
+            }
+            temas[0] = tema;
+            return true;
+        }
+    }
     return false;
 }

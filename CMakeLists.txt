@@ -17,4 +17,6 @@ add_executable(Taller1
         include/struct/ListaRespuestas.h
         services/CargaTema.cpp
         include/services/CargaTema.h
+        services/OpcionRevisarTema.cpp
+        include/services/OpcionRevisarTema.h
 )

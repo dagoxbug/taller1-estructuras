@@ -91,6 +91,9 @@ public:
 
     bool existeTema(std::string id);
 
+    Tema* buscarTema(const std::string& id);
+    bool moverAlInicio(const std::string& id);
+
 };
 
 
