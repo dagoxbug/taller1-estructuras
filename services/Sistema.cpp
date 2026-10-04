@@ -185,3 +185,10 @@ std::string Sistema::generarIdTema() {
 
     return id;
 }
+
+void Sistema::estadisticas() {
+    std::cout << "[---------- Estadísticas ----------]\n";
+    std::cout << "Usuario con mas respuestas: ";
+    std::cout << "Tema con mayor cantidad de respuestas: ";
+    std::cout << "Número de expansiones: " << usuarios.getExpansiones() << "\n";
+}

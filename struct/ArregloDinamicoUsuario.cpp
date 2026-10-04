@@ -9,18 +9,24 @@ ArregloDinamicoUsuario::ArregloDinamicoUsuario() {
 
     cantidad = 0;
     capacidad = 1;
+    expansiones = 0;
 
     usuarios = (Usuario**)malloc(capacidad * sizeof(Usuario*));
 }
 
+int ArregloDinamicoUsuario::getExpansiones() const {
+    return expansiones;
+}
 
 void ArregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 
     // si la cantidad de elementos es igual que la capacidad se agrega mas espacios
     if (cantidad == capacidad) {
-        capacidad = capacidad + 1;
+        capacidad++;
 
         usuarios = (Usuario**)realloc(usuarios, capacidad * sizeof(Usuario*));
+        //se aumenta una expansion porque el arreglo aumento su capacidad
+        expansiones++;
     }
 
     usuarios[cantidad] = usuario;
