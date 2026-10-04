@@ -46,10 +46,5 @@ int main() {
     if (!cargarTemas("temas.csv", arregloUsuarios, arregloTemas)) {
         return 1;
     }
-
-    // AGREGADO - PRUEBA TEMPORAL: borrar cuando la carga funcione
-    std::cout << "\nCarga exitosa.\n\n";
-    arregloTemas.mostrarTemas();
-
     return 0;
 }
