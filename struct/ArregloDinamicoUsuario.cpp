@@ -30,6 +30,11 @@ void ArregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 
 void ArregloDinamicoUsuario::eliminarUsuario(int id) {
 
+    // falta eliminar temas publicados por el usuario
+    // eliminar respuestas del usuario
+    // y mostrar la cantidad de temas y respuestas del usuario y verificar si se borra o no
+
+
     int posicion = -1;
 
     // Buscar el usuario

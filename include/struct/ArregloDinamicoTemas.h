@@ -45,7 +45,7 @@ public:
     * en una posición utilizando realloc.
     * Los temas existentes se desplazan una posición hacia
     * la derecha para dejar espacio al nuevo tema.
-    * 
+    *
     * @param tema Puntero al tema que se desea agregar.
     */
     void agregarTema(Tema* tema);
@@ -58,6 +58,17 @@ public:
     */
     void mostrarTemas();
     int getCantidad();
+
+    /**
+    * @brief Comprueba si un identificador ya existe.
+    *
+    * Recorre los temas almacenados y compara sus identificadores
+    * con el identificador recibido.
+    *
+    * @param id Identificador que se desea buscar.
+    * @return true si el identificador ya existe, false en caso contrario.
+    */
+    bool existeTema(std::string id);
 
 };
 

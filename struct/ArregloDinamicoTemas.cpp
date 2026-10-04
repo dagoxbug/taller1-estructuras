@@ -30,6 +30,18 @@ void ArregloDinamicoTemas::agregarTema(Tema* tema) {
 
 void ArregloDinamicoTemas::mostrarTemas() {
     for (int i = 0; i < cantidad; i++) {
-        cout << temas[i]->getId() << ": " << temas[i]->getTitulo() << "\n";
+        std::cout << temas[i]->getId() << ": " << temas[i]->getTitulo() << "\n";
     }
+}
+
+bool ArregloDinamicoTemas::existeId(std::string id) {
+
+    for (int i = 0; i < cantidad; i++) {
+
+        if (temas[i]->getId() == id) {
+            return true;
+        }
+    }
+
+    return false;
 }

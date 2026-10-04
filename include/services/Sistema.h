@@ -66,6 +66,17 @@ public:
     void publicar();
     void estadisticas();
 
+    /**
+    * @brief Genera un identificador aleatorio para un tema.
+    *
+    * El identificador está compuesto por dos letras mayúsculas
+    * y tres números. Se verifica que el identificador generado
+    * no exista previamente entre los temas registrados.
+    *
+    * @return Un identificador único para el tema.
+    */
+    std::string generarIdTema();
+
 };
 
 

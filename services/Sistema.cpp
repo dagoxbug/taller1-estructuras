@@ -93,3 +93,58 @@ void Sistema::eliminarUsuario() {
     }
     usuarios.eliminarUsuario(id);
 }
+
+void Sistema::publicar() {
+    std::string titulo;
+    std::string contenido;
+
+    std::cout << "[---------- Foro Comunitario ----------]\n";
+    std::cout << "Ingrese el titulo: \n";
+    std::getline(std::cin, titulo);
+
+    // preguntar hasta que el titulo no quede vacio
+    while (titulo.empty()) {
+        std::cout << "El titulo no puede estar vacio.\n";
+        std::cout << "Ingrese el titulo: ";
+        std::getline(std::cin, titulo);
+    }
+
+    std::cout << "Ingrese el contenido: \n";
+    std::getline(std::cin, contenido);
+
+    //preguntar hasta que el contenido no quede vacio
+    while (contenido.empty()) {
+        std::cout << "El contenido no puede estar vacio.\n";
+        std::cout << "Ingrese el contenido: ";
+        std::getline(std::cin, contenido);
+    }
+
+    std::string idTema = generarIdTema();
+    std::cout << "Tema publicado con ID: " << idTema << "\n";
+
+    //creamos el tema con su respectivo id e id del usuario actual
+    Tema* tema = new Tema(idTema, titulo, contenido,
+        usuarioActual->getId());
+
+    // agregamos el tema al arreglo como el mas reciente
+    temas.agregarTema(tema);
+}
+
+std::string Sistema::generarIdTema() {
+
+    std::string id;
+
+    do {
+        id = "";
+
+        //id con 2 letras mayusculas y 3 numeros
+        id += 'A' + rand() % 26;
+        id += 'A' + rand() % 26;
+
+        id += '0' + rand() % 10;
+        id += '0' + rand() % 10;
+        id += '0' + rand() % 10;
+    } while (temas.existeTema(id));
+
+    return id;
+}
