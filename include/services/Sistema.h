@@ -4,6 +4,7 @@
 
 #ifndef TALLER1_SISTEMA_H
 #define TALLER1_SISTEMA_H
+#include "include/struct/ArregloDinamicoTemas.h"
 #include "include/struct/ArregloDinamicoUsuario.h"
 
 /**
@@ -14,6 +15,7 @@ class Sistema {
 private:
 
     ArregloDinamicoUsuario usuarios;
+    ArregloDinamicoTemas temas;
 
     /**
      * @brief Usuario que se encuentra actualmente autenticado
@@ -59,6 +61,10 @@ public:
      * que no corresponda al usuario actualmente autenticado.
      */
     void eliminarUsuario();
+
+    void revisarTema();
+    void publicar();
+    void estadisticas();
 
 };
 

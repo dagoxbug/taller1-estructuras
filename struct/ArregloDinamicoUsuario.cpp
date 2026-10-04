@@ -18,7 +18,7 @@ void ArregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 
     // si la cantidad de elementos es igual que la capacidad se agrega mas espacios
     if (cantidad == capacidad) {
-        capacidad = capacidad * 2;
+        capacidad = capacidad + 1;
 
         usuarios = (Usuario**)realloc(usuarios, capacidad * sizeof(Usuario*));
     }

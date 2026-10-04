@@ -36,7 +36,44 @@ void Sistema::iniciarSistema() {
 void Sistema::mostrarMenu() {
 
     std::cout << "[---------- Foro Comunitario ----------]\n";
-    // falta agregar todos los temas con sus id
+    std::cout << "Temas: \n";
+    temas.mostrarTemas();
+    std::cout << "A) Revisar un tema\n";
+    std::cout << "B) Eliminar usuario\n";
+    std::cout << "C) Publicar\n";
+    std::cout << "D) Estadisticas\n";
+    std::cout << "E) Salir\n";
+
+    char opcion;
+
+    std::cout << "Ingrese una opcion: ";
+    std::cin >> opcion;
+
+    switch (opcion) {
+        case 'A':
+            //revisar tema
+            break;
+
+        case 'B':
+            eliminarUsuario();
+            break;
+
+        case 'C':
+            //publicar
+            break;
+
+        case 'D':
+            //estadisticas
+            break;
+
+        case 'E':
+            //salir
+            break;
+
+        default:
+            std::cout << "Opcion no valida\n";
+    }
+
 }
 
 void Sistema::eliminarUsuario() {
