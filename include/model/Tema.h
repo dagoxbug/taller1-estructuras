@@ -6,6 +6,9 @@
 #define TALLER1_ESTRUCTURAS_TEMA_H
 #include <iostream>
 
+
+#include "include/struct/ListaRespuestas.h"
+
 /**
  * @class Tema
  * @brief Representa el tema escrito en el foro
@@ -16,17 +19,19 @@ private:
     std::string titulo;         ///< titulo del foro
     std::string contenido;      ///< Contenido del tema
     int idUsuario;              ///< identificador del usuario que escribio el tema
-
-    //ListaRespuestas respuestas;   <- lista enlazada
+    ListaRespuestas respuestas;
 
 public:
-    Tema(std::string id, std::string titulo, std::string contenido, int idUsuario);
+    Tema(const std::string& id, const std::string& titulo,
+         const std::string& contenido, int idUsuario);
+    Tema(const Tema&) = delete;
 
     /// Getters
     std::string getId();
     std::string getTitulo();
     std::string getContenido();
     int getIdUsuario();
+    ListaRespuestas& getRespuestas();
 
 };
 

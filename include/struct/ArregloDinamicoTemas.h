@@ -39,7 +39,7 @@ public:
     ArregloDinamicoTemas();
 
     // falta implementar
-    ~ArregloDinamicoTemas();
+    //~ArregloDinamicoTemas();
 
     /**
     * @brief Agrega un nuevo tema al arreglo.

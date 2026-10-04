@@ -31,6 +31,12 @@ void ArregloDinamicoTemas::agregarTema(Tema* tema) {
 void ArregloDinamicoTemas::mostrarTemas() {
     for (int i = 0; i < cantidad; i++) {
         std::cout << temas[i]->getId() << ": " << temas[i]->getTitulo() << "\n";
+        Respuesta* actual = temas[i]->getRespuestas().getCabeza();
+        while (actual != nullptr) {
+            std::cout << "   [" << actual->getId() << "] usuario " << actual->getIdUsuario()
+                      << ": " << actual->getContenido() << "\n";
+            actual = actual->getSiguiente();
+        }
     }
 }
 

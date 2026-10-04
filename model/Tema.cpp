@@ -4,11 +4,10 @@
 
 #include "../include/model/Tema.h"
 
-Tema::Tema(std::string id, std::string titulo, std::string contenido, int idUsuario) {
-    this->id = id;
-    this->titulo = titulo;
-    this->contenido = contenido;
-    this->idUsuario = idUsuario;
+Tema::Tema(const std::string& id, const std::string& titulo,
+           const std::string& contenido, int idUsuario)
+    : id(id), titulo(titulo), contenido(contenido), idUsuario(idUsuario) {
+    // respuestas se construye vacia automaticamente
 }
 
 std::string Tema::getId() {
@@ -25,4 +24,8 @@ std::string Tema::getContenido() {
 
 int Tema::getIdUsuario() {
     return idUsuario;
+}
+
+ListaRespuestas& Tema::getRespuestas() {
+    return respuestas;
 }

@@ -40,7 +40,7 @@ public:
     ArregloDinamicoUsuario();
 
     //falta implementar
-    ~ArregloDinamicoUsuario();
+    //~ArregloDinamicoUsuario();
 
     /**@brief agrega un usuario al arreglo
      *

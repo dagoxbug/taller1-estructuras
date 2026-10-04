@@ -9,8 +9,11 @@
 
 #include "include/model/Usuario.h"
 #include "include/struct/ArregloDinamicoUsuario.h"
-using namespace std;
+#include "include/struct/ArregloDinamicoTemas.h"   // AGREGADO
+#include "include/services/CargaTema.h"           // AGREGADO (si tu archivo es CargaTema.h, cambia el nombre)
+
 ArregloDinamicoUsuario arregloUsuarios;
+ArregloDinamicoTemas arregloTemas;                 // AGREGADO
 
 int main() {
 
@@ -39,16 +42,14 @@ int main() {
         arregloUsuarios.agregarUsuario(usuario);
 
     }
-
-    while (std::getline(file2, linea)){ //temas
-        std::stringstream ss(linea);
-        std::string id2,titulo,contenido,idusuario,respuestas;
-
-        std::getline(ss, id2, ';');
-        std::getline(ss, titulo, ';');
-        std::getline(ss, contenido, ';');
-        std::getline(ss, idusuario, ';');
-        std::getline(ss, respuestas, ';');
+    //carga real de temas y respuestas (con validaciones)
+    if (!cargarTemas("temas.csv", arregloUsuarios, arregloTemas)) {
+        return 1;
     }
+
+    // AGREGADO - PRUEBA TEMPORAL: borrar cuando la carga funcione
+    std::cout << "\nCarga exitosa.\n\n";
+    arregloTemas.mostrarTemas();
+
     return 0;
 }
