@@ -4,6 +4,7 @@
 
 #include "../include/struct/ArregloDinamicoUsuario.h"
 
+
 ArregloDinamicoUsuario::ArregloDinamicoUsuario() {
 
     cantidad = 0;
@@ -63,5 +64,23 @@ void ArregloDinamicoUsuario::eliminarUsuario(int id) {
         capacidad = capacidad / 2;
 
         usuarios = (Usuario**)realloc(usuarios, cantidad * sizeof(Usuario*));
+    }
+}
+
+Usuario* ArregloDinamicoUsuario::buscarUsuario(int id) {
+    for (int i = 0; i < cantidad; i++) {
+        if (usuarios[i]->getId() == id) {
+            return usuarios[i];
+        }
+    }
+    return nullptr;
+}
+
+void ArregloDinamicoUsuario:: mostrarUsuarios() {
+
+    for (int i = 0; i < cantidad; i++) {
+        std::cout << "D: " << usuarios[i]->getId() << " | Nombre: "
+        << usuarios[i]->getNombre() << std::endl;
+
     }
 }

@@ -10,4 +10,6 @@ add_executable(Taller1
         main.h
         model/Usuario.cpp
         struct/ArregloDinamicoUsuario.cpp
+        services/Sistema.cpp
+        include/services/Sistema.h
 )

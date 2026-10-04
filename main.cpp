@@ -8,7 +8,9 @@
 #include <iostream>
 
 #include "include/model/Usuario.h"
+#include "include/struct/ArregloDinamicoUsuario.h"
 using namespace std;
+ArregloDinamicoUsuario arregloUsuarios;
 
 int main() {
 
@@ -33,6 +35,8 @@ int main() {
         std::getline(ss, nombre, ';');
         std::cout << id << " " << nombre << "\n";
         Usuario* usuario = new Usuario(stoi(id), nombre);
+
+        arregloUsuarios.agregarUsuario(usuario);
 
     }
 

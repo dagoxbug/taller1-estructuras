@@ -59,6 +59,18 @@ public:
     void eliminarUsuario(int id);
 
     /**
+     * @brief Busca un usuario mediante su identificador
+     *
+     * Recorre el arreglo dinamico y busca un usuario que tenga
+     * el ID indicado
+     *
+     * @param id identificador del usuario que se desea buscar
+     * @return Usuario* puntero al usuario encontrado, si no existe,
+     * retorna nullptr
+     */
+    Usuario* buscarUsuario(int id);
+
+    /**
      * @brief Muestra los usuarios almacenados en el arreglo.
      *
      * Recorre el arreglo y muestra la información de cada usuario.
