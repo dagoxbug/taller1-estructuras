@@ -4,18 +4,35 @@
 
 #ifndef TALLER1_ESTRUCTURAS_RESPUESTA_H
 #define TALLER1_ESTRUCTURAS_RESPUESTA_H
-#include <iostream>
+
+#include <string>
 
 /**
  * @class Respuesta
- * @brief Representa la respuesta de un tema en el foro
+ * @brief Nodo de la lista enlazada simple que representa una respuesta a un tema.
  */
 class Respuesta {
+private:
+    int id;                 /// Identificador correlativo de la respuesta dentro del tema
+    int idUsuario;          /// Identificador del usuario que escribio la respuesta
+    std::string contenido;  /// Texto de la respuesta (puede estar vacio)
+    Respuesta* siguiente;   /// Puntero al siguiente nodo de la lista (nullptr si es el ultimo)
 
-    int id;                 ///< Identificador unico del mensaje
-    int idUsuario;          ///< identificador del usuario que envio la respuesta
-    std::String contenido;  ///< Contenido de la respuesta
+public:
+    /**
+     * @brief Crea una respuesta sin nodo siguiente.
+     * @param id Identificador correlativo de la respuesta.
+     * @param idUsuario Identificador del usuario que la escribio.
+     * @param contenido Texto de la respuesta.
+     */
+    Respuesta(int id, int idUsuario, const std::string& contenido);
+
+    /// Getters y Setters
+    int getId() const;
+    int getIdUsuario() const;
+    std::string getContenido() const;
+    Respuesta* getSiguiente() const; ///< Obtiene el siguiente nodo de la lista. Retorna Puntero a la siguiente respuesta, o nullptr si no hay.
+    void setSiguiente(Respuesta* siguiente); ///< Cambia el nodo al que apunta esta respuesta. Parametro siguiente--> Puntero a la nueva respuesta siguiente.
 };
-
 
 #endif //TALLER1_ESTRUCTURAS_RESPUESTA_H

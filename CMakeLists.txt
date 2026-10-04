@@ -7,9 +7,12 @@ include_directories(.)
 
 add_executable(Taller1
         main.cpp
-        main.h
         model/Usuario.cpp
+        model/Tema.cpp
+        model/Respuesta.cpp
         struct/ArregloDinamicoUsuario.cpp
+        struct/ArregloDinamicoTemas.cpp
         services/Sistema.cpp
-        include/services/Sistema.h
+        struct/ListaRespuestas.cpp
+        include/struct/ListaRespuestas.h
 )

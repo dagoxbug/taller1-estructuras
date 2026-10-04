@@ -58,6 +58,7 @@ public:
     */
     void mostrarTemas();
     int getCantidad();
+    bool existeId(std::string id);
 
     /**
     * @brief Comprueba si un identificador ya existe.

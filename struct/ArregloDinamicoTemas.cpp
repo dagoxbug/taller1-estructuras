@@ -34,6 +34,10 @@ void ArregloDinamicoTemas::mostrarTemas() {
     }
 }
 
+bool ArregloDinamicoTemas::existeTema(std::string id) {
+    return false;
+}
+
 bool ArregloDinamicoTemas::existeId(std::string id) {
 
     for (int i = 0; i < cantidad; i++) {

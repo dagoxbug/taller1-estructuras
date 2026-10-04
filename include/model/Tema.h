@@ -22,7 +22,7 @@ private:
 public:
     Tema(std::string id, std::string titulo, std::string contenido, int idUsuario);
 
-    int getId();
+    std::string getId();
     std::string getTitulo();
     std::string getContenido();
     int getIdUsuario();
