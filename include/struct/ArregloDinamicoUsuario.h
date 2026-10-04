@@ -30,6 +30,11 @@ private:
      */
     int capacidad;
 
+    /**
+     * @brief Contar cuantas veces el arreglo dinamico de usuarios aumenta su capacidad
+     */
+    int expansiones;
+
 public:
     /**
      * @brief Constructor de la clase
@@ -41,6 +46,12 @@ public:
 
     //falta implementar
     //~ArregloDinamicoUsuario();
+
+    /**
+     * @brief Obtiene la cantidad de veces que se ha expandido el arreglo.
+     * @return Cantidad de expansiones realizadas.
+     */
+    int getExpansiones() const;
 
     /**@brief agrega un usuario al arreglo
      *
