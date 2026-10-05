@@ -11,6 +11,7 @@
 #include "include/struct/ArregloDinamicoUsuario.h"
 #include "include/struct/ArregloDinamicoTemas.h"
 #include "include/services/CargaTema.h"
+#include "include/services/Sistema.h"
 ArregloDinamicoUsuario arregloUsuarios;
 ArregloDinamicoTemas arregloTemas;
 
@@ -46,4 +47,7 @@ int main() {
         return 1;
     }
     return 0;
+
+    Sistema sistema;
+    sistema.iniciarSistema();
 }

@@ -53,6 +53,21 @@ public:
      */
     int getExpansiones() const;
 
+    /**
+     * @brief Obtiene la cantidad actual de usuarios almacenados.
+     *
+     * @return Cantidad de usuarios almacenados.
+     */
+    int getCantidad() const;
+
+    /**
+     * @brief Obtiene un usuario según su posición en el arreglo.
+     *
+     * @param posicion Posición del usuario dentro del arreglo.
+     * @return Puntero al usuario almacenado en la posición indicada.
+     */
+    Usuario* getUsuario(int posicion) const;
+
     /**@brief agrega un usuario al arreglo
      *
      * si el arreglo no tiene espacio disponible, aumneta su capacidad

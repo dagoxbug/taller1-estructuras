@@ -86,6 +86,26 @@ public:
     */
     std::string generarIdTema();
 
+    /**
+     * @brief Muestra el o los usuarios con mayor cantidad de respuestas.
+     *
+     * Recorre las respuestas de todos los temas, cuenta las respuestas
+     * realizadas por cada usuario y muestra aquellos que tengan la mayor
+     * cantidad. En caso de empate, muestra todos los usuarios correspondientes.
+     */
+    void usuarioConMasRespuestas();
+
+    /**
+     * @brief Muestra el o los temas con mayor cantidad de respuestas.
+     *
+     * Recorre todos los temas del foro y determina cuál o cuáles tienen
+     * la mayor cantidad de respuestas. En caso de empate, muestra todos
+     * los temas que tengan la misma cantidad máxima de respuestas.
+     *
+     * Para cada tema se muestra su identificador, título y autor.
+     */
+    void temaConMasRespuestas();
+
 };
 
 

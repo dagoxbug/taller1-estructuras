@@ -40,6 +40,14 @@ void ArregloDinamicoTemas::mostrarTemas() {
     }
 }
 
+int ArregloDinamicoTemas::getCantidad() const {
+    return cantidad;
+}
+
+Tema* ArregloDinamicoTemas::getTema(int posicion) const {
+    return temas[posicion];
+}
+
 void ArregloDinamicoTemas::eliminarTemasPorUsuario(int idUsuario) {
     for (int i = 0; i < cantidad; i++) {
         if (temas[i]->getIdUsuario() == idUsuario) {

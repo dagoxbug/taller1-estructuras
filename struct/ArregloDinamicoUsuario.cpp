@@ -18,6 +18,14 @@ int ArregloDinamicoUsuario::getExpansiones() const {
     return expansiones;
 }
 
+int ArregloDinamicoUsuario::getCantidad() const {
+    return cantidad;
+}
+
+Usuario* ArregloDinamicoUsuario::getUsuario(int posicion) const {
+    return usuarios[posicion];
+}
+
 void ArregloDinamicoUsuario::agregarUsuario(Usuario* usuario) {
 
     // si la cantidad de elementos es igual que la capacidad se agrega mas espacios

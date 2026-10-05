@@ -59,11 +59,11 @@ void Sistema::mostrarMenu() {
             break;
 
         case 'C':
-            //publicar
+            publicar();
             break;
 
         case 'D':
-            //estadisticas
+            estadisticas();
             break;
 
         case 'E':
@@ -189,7 +189,134 @@ std::string Sistema::generarIdTema() {
 
 void Sistema::estadisticas() {
     std::cout << "[---------- Estadísticas ----------]\n";
-    std::cout << "Usuario con mas respuestas: ";
-    std::cout << "Tema con mayor cantidad de respuestas: ";
+    std::cout << "Usuario con mas respuestas: \n";
+    usuarioConMasRespuestas();
+    std::cout << "Tema con mayor cantidad de respuestas: \n" ;
+    temaConMasRespuestas();
     std::cout << "Número de expansiones: " << usuarios.getExpansiones() << "\n";
+}
+
+void Sistema::usuarioConMasRespuestas() {
+
+    // Si no existen usuarios, no podemos buscar uno con más respuestas
+    if (usuarios.getCantidad() == 0) {
+        std::cout << "No existen usuarios.\n";
+        return;
+    }
+
+    // Creamos un contador para cada usuario
+    int* contador = new int[usuarios.getCantidad()];
+
+    // Inicializamos todos los contadores en 0
+    for (int i = 0; i < usuarios.getCantidad(); i++) {
+        contador[i] = 0;
+    }
+
+    // Recorremos todos los temas
+    for (int i = 0; i < temas.getCantidad(); i++) {
+
+        Tema* tema = temas.getTema(i);
+
+        // Obtenemos la primera respuesta del tema
+        Respuesta* respuesta = tema->getRespuestas().getCabeza();
+
+        // Recorremos la lista enlazada de respuestas
+        while (respuesta != nullptr) {
+
+            // Obtenemos el ID del usuario que hizo la respuesta
+            int idUsuario = respuesta->getIdUsuario();
+
+            // Buscamos ese usuario en el arreglo
+            for (int j = 0; j < usuarios.getCantidad(); j++) {
+
+                Usuario* usuario = usuarios.getUsuario(j);
+
+                if (usuario->getId() == idUsuario) {
+
+                    // Aumentamos la cantidad de respuestas de ese usuario
+                    contador[j]++;
+
+                    break;
+                }
+            }
+
+            // Pasamos a la siguiente respuesta
+            respuesta = respuesta->getSiguiente();
+        }
+    }
+
+    // Buscamos la mayor cantidad de respuestas
+    int mayor = 0;
+
+    for (int i = 0; i < usuarios.getCantidad(); i++) {
+
+        if (contador[i] > mayor) {
+            mayor = contador[i];
+        }
+    }
+
+    // Mostramos todos los usuarios que tienen la mayor cantidad
+    for (int i = 0; i < usuarios.getCantidad(); i++) {
+
+        if (contador[i] == mayor) {
+
+            Usuario* usuario = usuarios.getUsuario(i);
+
+            std::cout << "ID: " << usuario->getId() << "\n";
+            std::cout << "Nombre: " << usuario->getNombre() << "\n";
+            std::cout << "Respuestas publicadas: "
+                      << contador[i] << "\n\n";
+        }
+    }
+
+    // Liberamos el arreglo temporal
+    delete[] contador;
+}
+
+void Sistema::temaConMasRespuestas() {
+
+    if (temas.getCantidad() == 0) {
+        std::cout << "No existen temas.\n";
+        return;
+    }
+
+    int mayor = 0;
+
+    // Buscamos la mayor cantidad de respuestas
+    for (int i = 0; i < temas.getCantidad(); i++) {
+
+        Tema* tema = temas.getTema(i);
+
+        int cantidadRespuestas =
+            tema->getRespuestas().getCantidad();
+
+        if (cantidadRespuestas > mayor) {
+            mayor = cantidadRespuestas;
+        }
+    }
+
+    // Mostramos todos los temas que tienen la mayor cantidad
+    for (int i = 0; i < temas.getCantidad(); i++) {
+
+        Tema* tema = temas.getTema(i);
+
+        int cantidadRespuestas =
+            tema->getRespuestas().getCantidad();
+
+        if (cantidadRespuestas == mayor) {
+
+            Usuario* autor =
+                usuarios.buscarUsuario(tema->getIdUsuario());
+
+            std::cout << "ID: " << tema->getId() << "\n";
+            std::cout << "Título: " << tema->getTitulo() << "\n";
+
+            if (autor != nullptr) {
+                std::cout << "Autor: " << autor->getNombre() << "\n";
+            }
+
+            std::cout << "Respuestas: "
+                      << cantidadRespuestas << "\n\n";
+        }
+    }
 }

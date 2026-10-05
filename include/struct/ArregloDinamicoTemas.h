@@ -58,6 +58,21 @@ public:
     */
     void mostrarTemas();
 
+    /**
+     * @brief Obtiene la cantidad actual de temas almacenados.
+     *
+     * @return Cantidad de temas almacenados.
+     */
+    int getCantidad() const;
+
+    /**
+     * @brief Obtiene el tema ubicado en una posición del arreglo.
+     *
+     * @param posicion Posición del tema dentro del arreglo.
+     * @return Puntero al tema almacenado en la posición indicada.
+     */
+    Tema* getTema(int posicion) const;
+
 
     /**
     * Elimina todos los temas creados por un usuario.
