@@ -4,8 +4,15 @@
 
 #include "../include/services/Sistema.h"
 #include "../include/services/OpcionRevisarTema.h"
+#include "../include/services/CargaTema.h"
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <limits>
 
-
+Sistema::Sistema() {
+    usuarioActual = nullptr;
+}
 Usuario* Sistema::autenticarUsuario() {
     int id;
     usuarioActual = nullptr;
@@ -35,43 +42,47 @@ void Sistema::iniciarSistema() {
 
 void Sistema::mostrarMenu() {
 
-    std::cout << "[---------- Foro Comunitario ----------]\n";
-    std::cout << "Temas: \n";
-    temas.mostrarTemas();
-    std::cout << "A) Revisar un tema\n";
-    std::cout << "B) Eliminar usuario\n";
-    std::cout << "C) Publicar\n";
-    std::cout << "D) Estadisticas\n";
-    std::cout << "E) Salir\n";
+    while (true) {
 
-    char opcion;
+        std::cout << "[---------- Foro Comunitario ----------]\n";
+        std::cout << "Temas: \n";
+        temas.mostrarTemas();
+        std::cout << "A) Revisar un tema\n";
+        std::cout << "B) Eliminar usuario\n";
+        std::cout << "C) Publicar\n";
+        std::cout << "D) Estadisticas\n";
+        std::cout << "E) Salir\n";
 
-    std::cout << "Ingrese una opcion: ";
-    std::cin >> opcion;
+        char opcion;
 
-    switch (opcion) {
-        case 'A':
-            opcionRevisarTema(temas, usuarios, usuarioActual);
-            break;
+        std::cout << "Ingrese una opcion: ";
+        std::cin >> opcion;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        case 'B':
-            eliminarUsuario();
-            break;
+        switch (opcion) {
+            case 'A':
+                opcionRevisarTema(temas, usuarios, usuarioActual);
+                break;
 
-        case 'C':
-            publicar();
-            break;
+            case 'B':
+                eliminarUsuario();
+                break;
 
-        case 'D':
-            estadisticas();
-            break;
+            case 'C':
+                publicar();
+                break;
 
-        case 'E':
-            //salir
-            break;
+            case 'D':
+                estadisticas();
+                break;
 
-        default:
-            std::cout << "Opcion no valida\n";
+            case 'E':
+                //salir
+                return;
+
+            default:
+                std::cout << "Opcion no valida\n";
+        }
     }
 
 }
@@ -319,4 +330,40 @@ void Sistema::temaConMasRespuestas() {
                       << cantidadRespuestas << "\n\n";
         }
     }
+}
+bool Sistema::cargarDatos() {
+    std::ifstream file("usuarios.csv");
+    if (!file.is_open()) {
+        std::cout << "Error al abrir el archivo usuarios.csv\n";
+        return false;
+    }
+
+    std::string linea;
+    while (std::getline(file, linea)) { //usuarios
+        if (!linea.empty() && linea.back() == '\r') {
+            linea.pop_back();
+        }
+        if (linea.empty()) {
+            continue;
+        }
+
+        std::stringstream ss(linea);
+        std::string id, nombre;
+        std::getline(ss, id, ';');
+        std::getline(ss, nombre, ';');
+
+        if (id.empty() || id.find_first_not_of("0123456789") != std::string::npos) {
+            std::cout << "Error en usuarios.csv: el Id \"" << id << "\" no es valido\n";
+            return false;
+        }
+        if (nombre.empty()) {
+            std::cout << "Error en usuarios.csv: el usuario " << id << " no tiene nombre\n";
+            return false;
+        }
+
+        usuarios.agregarUsuario(new Usuario(std::stoi(id), nombre));
+    }
+
+    // carga de temas y respuestas (con validaciones)
+    return cargarTemas("temas.csv", usuarios, temas);
 }

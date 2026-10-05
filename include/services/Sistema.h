@@ -105,6 +105,7 @@ public:
      * Para cada tema se muestra su identificador, título y autor.
      */
     void temaConMasRespuestas();
+    bool cargarDatos();
 
 };
 
